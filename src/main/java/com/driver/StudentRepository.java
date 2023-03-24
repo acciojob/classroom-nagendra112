@@ -71,6 +71,15 @@ public class StudentRepository {
     }
 
     public void deleteAllTeachers(){
+        for(String student : studentTeacher.keySet()){
+            studentDb.remove(student);
+        }
+        for(List<String > students : teacherStudentDb.values()){
+            for (String student : students){
+                studentDb.remove(student);
+            }
+        }
+
         teacherDb.clear();
         studentTeacher.clear();
         teacherStudentDb.clear();
